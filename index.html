@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="接單計算機是為台灣外送工作者設計的本機薪水與趟次統計工具。">
+  <meta name="theme-color" content="#0f6548">
+  <title>接單計算機－外送薪水與趟次統計</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav-shell">
+    <nav class="nav" aria-label="主要導覽">
+      <a class="brand" href="#top" aria-label="回到首頁">
+        <span class="brand-mark" aria-hidden="true">接</span>
+        <span>接單計算機</span>
+      </a>
+      <div class="nav-links">
+        <a href="#features">功能</a>
+        <a href="#download">下載</a>
+        <a href="privacy.html">隱私權</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">為台灣外送工作者設計</p>
+        <h1>每一張單，<br><span>都算清楚。</span></h1>
+        <p class="hero-lead">按下接單就開始計時，疊單、跨趟、最低保底、日週月統計一次整理。資料只存在你的手機裡。</p>
+        <div class="hero-actions" id="download">
+          <a class="button primary" href="https://drive.google.com/uc?export=download&amp;id=1HhJ92qLcq2ddGx-ak4au6q6NSs0WlzGk">下載 v1.0.5 遷移版</a>
+          <a class="button secondary" href="#how-it-works">看看怎麼算</a>
+        </div>
+        <p class="release-note">目前為 Google Play 上架前的資料遷移版。正式封閉測試開始後，主要下載將改為 Google Play。</p>
+      </div>
+      <div class="phone-wrap" aria-label="接單計算機操作示意">
+        <div class="phone">
+          <div class="phone-status"><span>9:41</span><span>● ● ▰</span></div>
+          <div class="phone-content">
+            <span class="mini-label">目前跑單</span>
+            <div class="metric-row">
+              <div><strong>2</strong><small>身上訂單</small></div>
+              <div><strong>NT$90</strong><small>目前預估</small></div>
+            </div>
+            <div class="trip-card">
+              <span>進行中趟次</span>
+              <strong>18:32</strong>
+              <small>開始 09:23 · 2 單</small>
+            </div>
+            <div class="action-row"><span>接單 1</span><span>送達 1</span></div>
+            <div class="bottom-tabs"><b>跑單</b><span>統計</span><span>紀錄</span></div>
+          </div>
+        </div>
+        <span class="float-dot">2</span>
+      </div>
+    </section>
+
+    <section class="proof-strip" aria-label="產品重點">
+      <div><strong>NT$245</strong><span>預設時薪，可修改</span></div>
+      <div><strong>NT$45</strong><span>每單最低保底</span></div>
+      <div><strong>3 單</strong><span>同時持有上限</span></div>
+      <div><strong>本機</strong><span>不需註冊帳號</span></div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="section-heading">
+        <p class="eyebrow">騎車時也能快速操作</p>
+        <h2>少按幾下，資訊多一點</h2>
+        <p>懸浮點只保留最重要的接單與送達操作；完整統計回到 App 再慢慢看。</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card featured">
+          <span class="feature-number">01</span>
+          <h3>自動處理疊單與跨趟</h3>
+          <p>新單永遠疊到最新未完成趟次；送達固定從最舊趟開始扣，也能自動跨趟。</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-number">02</span>
+          <h3>每單獨立計時與保底</h3>
+          <p>每張單從接單開始，以當下時薪計算；不足 NT$45 時，仍以 NT$45 計。</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-number">03</span>
+          <h3>日、週、月都看得懂</h3>
+          <p>日期可直接點選，搭配總單量、計算薪水、實際薪水與預計補給差額。</p>
+        </article>
+        <article class="feature-card">
+          <span class="feature-number">04</span>
+          <h3>完整備份帶著走</h3>
+          <p>匯出 `.ocbackup` 檔可保留進行中訂單、歷史、時薪、實際薪水與設定。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section calculation" id="how-it-works">
+      <div>
+        <p class="eyebrow light">計算方式</p>
+        <h2>時間薪資和最低保底，取較高者</h2>
+        <p>每張單都各自套用同一套公式。疊三單的期間，三張單會同時累積。</p>
+      </div>
+      <div class="formula">
+        <span>單筆預估薪水</span>
+        <strong>max（經過時間 × 時薪，NT$45）</strong>
+        <small>跨午夜時依實際分鐘拆到不同日期；總單量歸在接單日。</small>
+      </div>
+    </section>
+
+    <section class="section backup-section">
+      <div class="backup-copy">
+        <p class="eyebrow">換到 Google Play 也不丟資料</p>
+        <h2>兩階段安全遷移</h2>
+        <ol>
+          <li><b>先安裝 v1.0.5</b><span>從目前版本匯出完整 `.ocbackup` 備份。</span></li>
+          <li><b>再安裝 Google Play 版</b><span>從 App 內選取備份，預覽後完全取代資料。</span></li>
+        </ol>
+      </div>
+      <aside class="notice">
+        <b>匯入前會先檢查</b>
+        <p>顯示備份日期、訂單數、趟次數、進行中訂單與資料範圍。只有按下「完全取代」才會寫入。</p>
+      </aside>
+    </section>
+
+    <section class="section final-cta">
+      <div>
+        <p class="eyebrow">版本 1.0.5</p>
+        <h2>先把資料安全帶走。</h2>
+        <p>Android 8.0 以上。第一階段提供遷移測試，正式版將只在台灣 Google Play 發布。</p>
+      </div>
+      <a class="button primary" href="https://drive.google.com/uc?export=download&amp;id=1HhJ92qLcq2ddGx-ak4au6q6NSs0WlzGk">下載遷移版 APK</a>
+    </section>
+  </main>
+
+  <footer>
+    <div><b>接單計算機</b><span>外送薪水與趟次統計工具</span></div>
+    <div class="footer-links">
+      <a href="privacy.html">隱私權政策</a>
+      <a href="https://github.com/spring01777-glitch/spring01777-glitch.github.io/issues">問題回報</a>
+    </div>
+    <p>本工具與 Uber、Uber Eats、foodpanda 或其他外送平台無隸屬或背書關係。</p>
+  </footer>
+</body>
+</html>
