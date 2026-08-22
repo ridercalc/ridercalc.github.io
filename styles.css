@@ -51,7 +51,8 @@ a { color: inherit; }
 .action-row span:last-child { background: #b4533d; }
 .bottom-tabs { margin-top: 74px; padding: 14px 5px 2px; display: flex; justify-content: space-around; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
 .bottom-tabs b { color: var(--green); }
-.float-dot { position: absolute; right: -30px; top: 150px; width: 66px; height: 66px; display: grid; place-items: center; color: white; background: var(--green-2); border: 7px solid white; border-radius: 50%; box-shadow: 0 12px 32px rgba(15, 101, 72, .35); font-size: 22px; font-weight: 900; }
+.float-dot { position: absolute; right: -30px; top: 150px; width: 66px; height: 66px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; background: var(--green-2); border: 7px solid white; border-radius: 50%; box-shadow: 0 12px 32px rgba(15, 101, 72, .35); font-size: 20px; font-weight: 900; line-height: 1; }
+.float-dot small { margin-top: 3px; font-size: 11px; }
 
 .proof-strip { width: min(1120px, calc(100% - 32px)); margin: 0 auto 110px; padding: 28px 34px; display: grid; grid-template-columns: repeat(4, 1fr); background: var(--cream); border-radius: 22px; }
 .proof-strip div { padding: 0 24px; border-right: 1px solid #dfdacc; }
