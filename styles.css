@@ -35,7 +35,8 @@ a { color: inherit; }
 .release-note { max-width: 590px; margin: 15px 0 0; color: #7b8984; font-size: 12px; }
 
 .phone-wrap { position: relative; width: min(360px, 100%); margin: auto; }
-.phone { padding: 12px; background: #10231d; border: 1px solid #2e4a40; border-radius: 44px; box-shadow: var(--shadow); transform: rotate(2deg); }
+.phone { padding: 12px; background: #10231d; border: 1px solid #2e4a40; border-radius: 44px; box-shadow: var(--shadow); transform: rotate(2deg); overflow: hidden; }
+.phone img { display: block; width: 100%; height: auto; border-radius: 32px; }
 .phone-status { padding: 5px 24px 10px; color: white; display: flex; justify-content: space-between; font-size: 11px; }
 .phone-content { min-height: 570px; padding: 32px 20px 16px; border-radius: 32px; background: #f1f6f3; }
 .mini-label { color: var(--muted); font-size: 13px; font-weight: 800; }
@@ -70,6 +71,10 @@ a { color: inherit; }
 .feature-number { opacity: .7; font-weight: 900; }
 .feature-card h3 { margin: 45px 0 8px; font-size: 23px; }
 .feature-card p { margin: 0; opacity: .8; }
+.screenshot-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.screenshot-grid figure { margin: 0; padding: 12px; background: white; border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
+.screenshot-grid img { display: block; width: 100%; height: auto; border-radius: 20px; }
+.screenshot-grid figcaption { padding: 14px 8px 6px; color: var(--muted); font-size: 13px; font-weight: 700; }
 
 .calculation { padding: 52px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; color: white; background: #102f25; border-radius: 30px; }
 .eyebrow.light { color: #7be0b5; }
@@ -133,6 +138,7 @@ footer > p { flex-basis: 100%; margin: 0; font-size: 11px; }
   .proof-strip { padding: 24px 10px; }
   .proof-strip div { padding: 0 14px; }
   .feature-grid { grid-template-columns: 1fr; }
+  .screenshot-grid { grid-template-columns: 1fr; }
   .feature-card { min-height: 210px; }
   .calculation { padding: 32px 24px; }
   .section { margin-bottom: 82px; }
