@@ -37,7 +37,7 @@
           <a class="button secondary" href="https://forms.gle/NsTCHgXNMiJJhn2u9">申請封測資格</a>
           <a class="button secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSfcZ2h7QMcfCdXkA_WD8o_FB3wdtGkZvESkRhy4cFeCzS8nsg/viewform">回報問題</a>
         </div>
-        <p class="release-note">v1.0.16 已送交 Google Play 封閉測試。請使用測試名單內的 Google 帳號加入；既有測試者可在審查通過後直接透過 Google Play 更新。</p>
+        <p class="release-note">v1.0.17 為 Google Play 封閉測試更新版，依外送專法重新計算服務分鐘與最低保障金額。請使用測試名單內的 Google 帳號加入；既有測試者可在審查通過後直接透過 Google Play 更新。</p>
       </div>
       <div class="phone-wrap" aria-label="接單計算機新版跑單與懸浮操作畫面">
         <div class="phone">
@@ -85,7 +85,7 @@
 
     <section class="section" id="screenshots">
       <div class="section-heading">
-        <p class="eyebrow">v1.0.16 實際畫面</p>
+        <p class="eyebrow">v1.0.17 實際畫面</p>
         <h2>跑單、統計、紀錄一次看清楚</h2>
         <p>下列畫面使用虛構店家、測試單號與測試金額，沒有真實外送資料。</p>
       </div>
@@ -101,12 +101,12 @@
       <div>
         <p class="eyebrow light">計算方式</p>
         <h2>時間薪資和最低保底，取較高者</h2>
-        <p>每張單都各自套用同一套公式。疊三單的期間，三張單會同時累積。</p>
+        <p>每張單都各自套用同一套公式。疊三單時仍逐單計算，每張單各自享有最低保障。</p>
       </div>
       <div class="formula">
         <span>單筆預估薪水</span>
-        <strong>max（經過時間 × 時薪，NT$45）</strong>
-        <small>跨午夜時依實際分鐘拆到不同日期；總單量歸在接單日。</small>
+        <strong>max（法定計費分鐘 × 時薪 ÷ 60，NT$45）</strong>
+        <small>未滿 30 秒捨去、30 秒以上進位 1 分鐘；金額依規則進位至小數第 1 位。跨午夜仍整筆歸在接單日。</small>
       </div>
     </section>
 
@@ -127,7 +127,7 @@
 
     <section class="section final-cta">
       <div>
-        <p class="eyebrow">Google Play 封閉測試・版本 1.0.16</p>
+        <p class="eyebrow">Google Play 封閉測試・版本 1.0.17</p>
         <h2>用受邀帳號加入測試。</h2>
         <p>Android 8.0 以上，目前僅限台灣與 ridercalc 測試名單內的 Google 帳號。</p>
       </div>
