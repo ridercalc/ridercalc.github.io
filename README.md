@@ -10,6 +10,13 @@
 
 網站不含追蹤程式或分析工具。
 
+## 2026-09-19 正式版候選同步
+
+- 目前公開版仍為 1.0.19；1.0.20（versionCode 21）已完成 Production 本地 preflight，尚待 Play Console 上傳、審查與公開結果。
+- 本機候選已驗證正式廣告設定、`TEST_ADS_ONLY=false` 與既有上傳簽章；直接安裝 APK、模擬器與 S24+ 測試仍維持測試廣告。
+- 候選 Git commit：`c02e44b28fb9a33a93aa516473f4e8e4ed84739f`；Production AAB SHA-256：`8B38EAD651298DAE165408C7D5B18657100F44F7FF20F47EB5A4A784C0ECA1D1`。
+- Play Console 草稿版本說明已準備；實際可更新狀態以 Google Play 審查與發布頁為準。
+
 ## 2026-09-12 發布同步
 
 - 最新版本：1.0.19；Google Play 台灣公開頁顯示 2026-09-11 更新及「安裝」按鈕，公開版本欄位為 1.0.19。
