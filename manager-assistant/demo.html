@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<title>管理員助手｜合成資料示範</title>
+<style>
+*{box-sizing:border-box}body{margin:0;color:#202f36;background:#f5f7f8;font:20px system-ui,sans-serif}
+.notice{padding:10px 16px;background:#fff0c2;color:#633d00;font-size:13px;border-bottom:1px solid #dbc482}
+header{background:#087f78;color:white;padding:20px 16px;font-size:24px;font-weight:700}
+main{background:white;padding-bottom:24px;min-height:70vh}
+.row{width:100%;display:flex;align-items:center;justify-content:space-between;border:0;border-bottom:1px solid #e1e7e8;background:white;padding:19px 16px;min-height:64px;text-align:left;font:inherit;color:inherit}
+.field-label{flex:0 0 36%;border:0;background:transparent;text-align:left;font:inherit;color:inherit;padding:0}.value{flex:1;max-width:60%;min-height:28px;text-align:right}
+button{cursor:pointer}.primary{display:block;width:92%;margin:20px auto 8px;padding:16px;border:0;border-radius:8px;background:#087f78;color:white;font:inherit}
+.secondary{background:#e4f1ef;color:#065c55}
+input{font:inherit;border:1px solid #9ab8b4;border-radius:6px;padding:14px;width:92%;margin:12px 4%}
+.option{display:block;width:100%;padding:19px 24px;border:0;border-bottom:1px solid #dde7e5;background:white;text-align:left;font:inherit;min-height:64px}
+.floor-grid{display:grid;grid-template-columns:repeat(3,1fr)}.floor-grid .option{text-align:center}
+.group{padding:18px 24px;color:#087f78}.marks{padding:16px;display:flex;gap:20px}.marks input{width:22px;margin:0}
+.error{padding:14px;color:#9e2525}.big{font-size:64px;text-align:center;margin:20px}
+.small{padding:0 16px;font-size:15px;line-height:1.6}.clear{border:0;background:transparent;font-size:24px}
+</style></head><body>
+<div class="notice">示範環境 DEMO · 星雲示範社區（虛構） · 非智生活 · 不會真正登記</div>
+<div id="app"></div>
+<script>
+'use strict';
+const state={page:'item',type:'郵件包裹',mail:'',location:'',logistics:'',barcode:'',name:'',unit:'',floor:'',group:'',cold:false,chilled:false,submissions:0};
+const history=[];
+const app=document.getElementById('app');
+function escapeText(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function row(label,value,action){return '<div class="row"><button type="button" class="field-label" onclick="'+action+'">'+label+'</button><span class="value" tabindex="0" onclick="'+action+'">'+escapeText(value)+'</span></div>';}
+function go(page){history.push(state.page);state.page=page;render();window.scrollTo(0,0);}
+function back(){state.page=history.pop()||'item';render();window.scrollTo(0,0);}
+function choose(key,value,next){state[key]=value;state.page=next;render();window.scrollTo(0,0);}
+function menu(title,values,key,next){return '<header><button class="clear" aria-label="返回" onclick="back()">‹</button> '+title+'</header><input placeholder="'+title+'" aria-label="'+title+'" oninput="filter(this.value)">'+values.map(v=>'<button class="option" onclick="choose(\''+key+'\',\''+v+'\',\''+next+'\')">'+v+'</button>').join('');}
+function filter(q){document.querySelectorAll('.option').forEach(b=>b.hidden=!b.textContent.includes(q));}
+function render(){
+let out='';
+switch(state.page){
+case 'item':
+out='<header>登記物品資訊</header><p class="small">此步從標籤辨識後開始，示範表單不模擬智生活相簿或伺服器。</p>'+
+'<button class="primary secondary" onclick="go(\'barcode\')">手動輸入包裹條碼</button><p class="small" id="barcodeValue">'+escapeText(state.barcode)+'</p>'+
+row('類型',state.type,"go('type')")+
+'<div class="marks"><label><input type="checkbox" '+(state.cold?'checked':'')+' onchange="state.cold=this.checked">冷凍</label><label><input type="checkbox" '+(state.chilled?'checked':'')+' onchange="state.chilled=this.checked">冷藏</label></div>'+
+row('郵件種類',state.mail,"go('mail')")+row('物流',state.logistics||'無',"go('logistics')")+row('位置',state.location,"go('location')")+
+'<button class="primary" onclick="itemNext()">下一步</button>';break;
+case 'type':out=menu('請選擇類型',['郵件包裹','退貨'],'type','item');break;
+case 'mail':out=menu('請選擇郵件種類',['一般掛號','包裹','大宗物件','冷凍包裹','冷藏包裹','雙掛','水果','生鮮蔬果'],'mail','item');break;
+case 'logistics':out=menu('請選擇物流',['中華郵政','黑貓宅急便','其它'],'logistics','item')+'<button class="primary" onclick="choose(\'logistics\',\'\',\'item\')">清空物流</button>';break;
+case 'location':out=menu('請選擇位置',['櫃台旁','後方櫃(掛號)','後方櫃(小包)','宅配室門前地上','冰箱(冷藏)','冰箱(冷凍)'],'location','item');break;
+case 'barcode':
+out='<header>手動輸入包裹條碼</header><input id="barcode" placeholder="請輸入條碼" aria-label="請輸入條碼" maxlength="20" inputmode="numeric" value="'+escapeText(state.barcode)+'"><button class="primary" onclick="choose(\'barcode\',document.getElementById(\'barcode\').value,\'item\')">確定</button>';break;
+case 'resident':
+out='<header>登記住戶資訊</header>'+row('收件戶別',state.unit,"go('groups')")+'<p class="small">收件人</p><input id="name" aria-label="收件人" placeholder="姓名" maxlength="30" value="'+escapeText(state.name)+'" oninput="state.name=this.value"><button class="primary" onclick="residentNext()">下一步</button>';break;
+case 'groups':out=menu('請選擇戶別',['901-905號','911-915號','921-925號'],'group','floors');break;
+case 'floors':out='<header>請選擇樓層</header><div class="floor-grid">'+Array.from({length:15},(_,i)=>'<button class="option" onclick="choose(\'floor\',\''+(i+1)+'\',\'units\')">'+(i+1)+'</button>').join('')+'</div>';break;
+case 'units':
+const houses=state.group==='901-905號'?[901,903,905]:state.group==='911-915號'?[911,913,915]:[921,923,925];
+out=menu('請選擇戶別',houses.map(h=>h+'號'+state.floor+'樓'),'unit','resident');break;
+case 'review':
+out='<header>確認送出</header><p class="small">送出只新增這個示範頁的記憶體資料，不會連線智生活。</p>'+
+row('戶別',state.unit,'')+row('收件人',state.name,'')+row('郵件種類',state.mail,'')+row('位置',state.location,'')+row('條碼',state.barcode,'')+
+'<button class="primary" onclick="submitDemo()">送出</button>';break;
+case 'success':
+out='<header>登記成功</header><div class="big">90001</div><p class="small">郵件編號：90001</p><p class="small">'+escapeText(state.unit)+'｜'+escapeText(state.name)+'</p><p class="small">假資料示範完成。本次送出 '+state.submissions+' 次，未建立正式包裹紀錄。</p><button class="primary" onclick="resetDemo()">繼續登記</button>';break;
+}
+app.innerHTML='<main>'+out+'</main>';
+document.title='示範｜'+state.page;
+}
+function itemNext(){if(state.mail&&state.location)go('resident');else error('請先選擇郵件種類與位置');}
+function residentNext(){state.name=document.getElementById('name').value;if(state.unit)go('review');else error('請先選擇戶別');}
+function error(msg){const p=document.createElement('p');p.className='error';p.textContent=msg;app.appendChild(p);}
+function submitDemo(){if(state.page!=='review'||!state.unit||!state.mail||!state.location)return;state.submissions++;go('success');}
+function resetDemo(){Object.assign(state,{page:'item',mail:'',location:'',barcode:'',unit:'',floor:'',name:'',group:'',logistics:'',submissions:0,cold:false,chilled:false});history.length=0;render();}
+render();
+</script></body></html>
