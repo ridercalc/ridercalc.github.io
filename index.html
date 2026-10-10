@@ -36,7 +36,7 @@
           <a class="button primary" href="https://play.google.com/store/apps/details?id=com.xiaoc.ordercalculator">Google Play 安裝／更新</a>
           <a class="button secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSfcZ2h7QMcfCdXkA_WD8o_FB3wdtGkZvESkRhy4cFeCzS8nsg/viewform">回報問題</a>
         </div>
-        <p class="release-note">目前公開版為 v1.0.19；v1.0.20（versionCode 21）已完成 Production 本地驗證，正在準備送審。正式版候選尚未公開前，使用者仍以 Google Play 提供的 v1.0.19 為準。</p>
+        <p class="release-note">目前 Google Play 台灣正式版為 v1.0.20。v1.0.21（versionCode 22）已於 2026-10-10 提交正式版審查，等待 Google 檢查及核准；審核通過並發布前，請以 Google Play 實際提供的版本為準。更新前建議先匯出完整備份，不要解除安裝。</p>
       </div>
       <div class="phone-wrap" aria-label="接單計算機跑單頁與懸浮圓點，截圖版本 v1.0.19">
         <div class="phone">
@@ -67,7 +67,7 @@
         <article class="feature-card">
           <span class="feature-number">02</span>
           <h3>快速截圖與裝置端辨識</h3>
-          <p>授權快速截圖後，懸浮視窗會暫時隱藏並保存目前畫面。可自行開關自動辨識，也能在訂單內容手動框選店名、單號或地址；多單無法明確配對時由你選擇。</p>
+          <p>上班時可啟用自動截圖，辨識 UE 展開取餐頁的單號與店名；資料填齊後暫停辨識，新單或缺資料時恢復。Android 14 以上可自行選擇分享單一 App 或整個螢幕；多單無法明確配對時由你選擇，也能手動框選或更正辨識結果。</p>
         </article>
         <article class="feature-card">
           <span class="feature-number">03</span>
@@ -84,16 +84,16 @@
 
     <section class="section" id="release-notes">
       <div class="section-heading">
-        <p class="eyebrow">v1.0.20 正式版候選</p>
-        <h2>送審前的最新修正</h2>
+        <p class="eyebrow">v1.0.21 最新更新</p>
+        <h2>已送審的最新修正</h2>
       </div>
       <ul>
-        <li>改善跑單頁更新效率，減少背景重複更新。</li>
-        <li>修正復原訂單操作影響後續收入資料的問題。</li>
-        <li>改善截圖辨識配對與多單歸類，避免舊辨識工作套用到新截圖。</li>
-        <li>修正混合平台月曆狀態、基本報酬加成統計與選取單日的金額顯示。</li>
-        <li>已完成訂單可更正平台；更正前顯示確認提示，並保留復原入口。</li>
-        <li>v1.0.20 已完成正式版 preflight：自動截圖取樣、店名／單號配對、平台切換與時薪統計修正已納入候選版；待 Play Console 上傳與審查結果確認後再公告可更新。</li>
+        <li>修正純英文字母單號無法辨識的問題，改善展開取餐頁的單號擷取。</li>
+        <li>最新 UE 趟次的單號與真實店名填齊後暫停 OCR；新單或缺資料時自動恢復。</li>
+        <li>Android 14 以上可選分享單一應用程式或整個螢幕；分享 UE 時，截圖需回到 Uber Driver 畫面操作。</li>
+        <li>改善多單人工分配與手動截圖，修正跨午夜修正趟次時間的問題。</li>
+        <li>完整備份包含上班時段；關閉程式會自動下班並保存時間。</li>
+        <li>v1.0.21 已完成正式版封裝驗證並提交 Play 審查，尚未公告可更新。OCR 可能受版型或字體影響，請核對店名與單號，必要時手動修正。</li>
       </ul>
       <p>基本報酬加成、小費、額外獎勵不包含在「平台實際薪水」內，請分欄填寫。已收到總額會合計上述收入；預計補給只比較計算應得薪水與平台實際薪水，未填實際薪水時不推算補給。</p>
     </section>
@@ -143,7 +143,7 @@
 
     <section class="section final-cta">
       <div>
-        <p class="eyebrow">Google Play 台灣商店・v1.0.19</p>
+        <p class="eyebrow">Google Play 台灣商店・v1.0.20</p>
         <h2>直接從商店安裝。</h2>
         <p>適用於台灣地區 18 歲以上外送工作者，Android 8.0 以上。免費下載，主 App 可能顯示廣告；懸浮工具不顯示廣告。</p>
       </div>
