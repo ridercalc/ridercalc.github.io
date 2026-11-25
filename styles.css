@@ -72,6 +72,7 @@ a { color: inherit; }
 .feature-card h3 { margin: 45px 0 8px; font-size: 23px; }
 .feature-card p { margin: 0; opacity: .8; }
 .screenshot-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.capture-example { max-width: 760px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .screenshot-grid figure { margin: 0; padding: 12px; background: white; border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow); }
 .screenshot-grid img { display: block; width: 100%; height: auto; border-radius: 20px; }
 .screenshot-grid figcaption { padding: 14px 8px 6px; color: var(--muted); font-size: 13px; font-weight: 700; }
